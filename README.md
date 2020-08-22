@@ -1,5 +1,7 @@
 # stock-knowledge-graph
 
+[我的笔记](./mynote.md)
+
 A small knowledge graph (knowledge base) construction using data published on the web.
 
 利用网络上公开的数据构建一个小型的证券知识图谱（知识库）。
