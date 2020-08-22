@@ -4,17 +4,17 @@ from lxml import etree
 
 
 def extract(stockpage_dir, executive_csv):
-    """Extract executive of the comnpany or stock
+    """Extract executive of the company or stock
 
     Args:
         stockpage_dir: (str) the directory of stock pages
         executive_csv: (str) the full path of the CSV file to be saved
     """
-    pages = map(lambda _: os.path.join(stockpage_dir, _), os.listdir(stockpage_dir))
-    pages = filter(lambda _: _.endswith('html'), pages)
+    pages = map(lambda html_dir: stockpage_dir + '/' + html_dir, os.listdir(stockpage_dir))
+    pages = filter(lambda page: page.endswith('html'), pages)
     headers = ['name', 'gender', 'age', 'code', 'jobs']
 
-    with open(directors_csv, 'w', encoding='utf-8') as file_directors:
+    with open(executive_csv, 'w', encoding='utf-8') as file_directors:
         file_directors_csv = csv.DictWriter(file_directors, headers)
         file_directors_csv.writeheader()
 

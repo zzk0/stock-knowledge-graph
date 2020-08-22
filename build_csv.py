@@ -147,7 +147,7 @@ def build_executive_stock(executive_prep, relation_import):
         file_import_csv.writerow(headers)
 
         for i, row in enumerate(file_prep_csv):
-            if i == 0:
+            if i == 0 or len(row) < 3:
                 continue
             # generate md5 according to 'name' 'gender' and 'age'
             start_id = get_md5('{},{},{}'.format(row[0], row[1], row[2]))
@@ -208,7 +208,7 @@ if __name__ == '__main__':
         os.makedirs(import_path)
     build_executive('data/executive_prep.csv', 'data/import/executive.csv')
     build_stock('data/stock_industry_prep.csv', 'data/stock_concept_prep.csv', 
-        'data/import/stock.csv')
+                'data/import/stock.csv')
     build_concept('data/stock_concept_prep.csv', 'data/import/concept.csv')
     build_industry('data/stock_industry_prep.csv', 'data/import/industry.csv')
 
